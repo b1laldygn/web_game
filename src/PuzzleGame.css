@@ -1,0 +1,263 @@
+.puzzle-game-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  border-radius: 20px;
+}
+
+.game-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.game-header h1 {
+  font-size: 2.5em;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 1.2em;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.stat-label {
+  font-weight: 600;
+}
+
+.stat-value {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+  perspective: 1000px;
+}
+
+.card {
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.card:hover:not(.flipped) {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px;
+  font-size: 2.5em;
+}
+
+.card-back {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 15px;
+}
+
+.card.flipped .card-front {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card.flipped .card-back {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.new-game-button {
+  display: block;
+  margin: 20px auto;
+  padding: 15px 40px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.new-game-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.new-game-button:active {
+  transform: scale(0.98);
+}
+
+.win-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.win-content {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.win-content h2 {
+  font-size: 2.5em;
+  color: #667eea;
+  margin: 0 0 20px 0;
+}
+
+.win-content p {
+  font-size: 1.5em;
+  color: #666;
+  margin: 0 0 30px 0;
+}
+
+.reset-button {
+  padding: 15px 40px;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reset-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.reset-button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .puzzle-game-container {
+    padding: 20px 10px;
+  }
+
+  .game-header h1 {
+    font-size: 1.8em;
+  }
+
+  .game-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .game-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .card-front {
+    font-size: 2em;
+  }
+
+  @media (max-width: 480px) {
+    .game-board {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .game-header h1 {
+      font-size: 1.5em;
+    }
+
+    .card-front {
+      font-size: 1.5em;
+    }
+
+    .win-content {
+      padding: 40px 20px;
+    }
+
+    .win-content h2 {
+      font-size: 1.8em;
+    }
+  }
+}
